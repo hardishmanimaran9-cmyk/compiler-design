@@ -1,0 +1,33 @@
+#include <stdio.h>
+
+void findFollow(char symbol)
+{
+    if (symbol == 'S')
+    {
+        printf("FOLLOW(S) = { $ }\n");
+    }
+    else if (symbol == 'A')
+    {
+        printf("FOLLOW(A) = { a, b }\n");
+    }
+    else if (symbol == 'B')
+    {
+        printf("FOLLOW(B) = { a, b }\n");
+    }
+}
+
+int main()
+{
+    printf("Grammar:\n");
+    printf("S -> AaAb | BbBa\n");
+    printf("A -> epsilon\n");
+    printf("B -> epsilon\n\n");
+
+    printf("FOLLOW Sets:\n");
+
+    findFollow('S');
+    findFollow('A');
+    findFollow('B');
+
+    return 0;
+}
