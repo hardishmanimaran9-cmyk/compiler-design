@@ -1,0 +1,29 @@
+
+#include <stdio.h>
+
+int main() {
+    char s[1000];
+    int i = 0;
+
+    printf("Enter a statement:\n");
+    fgets(s, sizeof(s), stdin);
+
+    while (s[i] != '\0') {
+        if (s[i] == ' ' || s[i] == '\t' || s[i] == '\n')
+            i++;
+        else if (s[i] == '/' && s[i + 1] == '/')
+            break;
+        else if (s[i] == '/' && s[i + 1] == '*') {
+            i += 2;
+            while (s[i] != '\0' && !(s[i] == '*' && s[i + 1] == '/'))
+                i++;
+            if (s[i] != '\0')
+                i += 2;
+        }
+        else
+            putchar(s[i++]);
+    }
+
+    return 0;
+}
+
